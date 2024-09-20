@@ -80,16 +80,11 @@ def attack(cur,oppo):
             else: # attack minion
                 cur.field.minions[choice].play(tar)
             choice=10 # reset choice to ask again
-    clean_field(cur,oppo) # clean up all corpse on field
-    
-# clean up corpse in both fields
-def clean_field(player1,player2):
-    player1.field.clean()
-    player2.field.clean()
+    helpers.clean_field(cur,oppo) # clean up all corpse on field
 
 # display field & current player's hands; players are index 0; cards start from 1
 def display(cur,oppo): 
-    clean_field(cur,oppo) # clean up all corpse on field
+    helpers.clean_field(cur,oppo) # clean up all corpse on field
     print("OPPONENT BATTLEFIELD:")
     print(f"\t0. {oppo.name} - health: {oppo.health}")
     helpers.display_cards(oppo.field.minions)

@@ -49,3 +49,8 @@ def get_effect_parameters(effect, cur, oppo):
         return [oppo]
     elif effect == boost1_effect:
         return [cur]
+
+# clean up corpse in both fields
+def clean_field(player1,player2):
+    player1.field.clean()
+    player2.field.clean()
