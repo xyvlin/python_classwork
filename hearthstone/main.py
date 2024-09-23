@@ -1,12 +1,19 @@
 from playerClasses import Player
 import helpers
-from hearthstone import init_game
-from hearthstone import gamePlay
+from game import init_game
+from game import gamePlay
 from deckHand import Deck
 from deckHand import Hand 
 from field import Field
 from cards import set_up_deck
-
+"""
+This module runs the actual game:
+    1. initialize players
+    2. display cards 
+    3. set up player names 
+    4. game loop 
+    5. display game result
+"""
 # initialize decks and players and turns
 deck1=set_up_deck()
 deck2=set_up_deck()

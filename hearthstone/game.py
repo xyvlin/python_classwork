@@ -2,8 +2,10 @@
 from cardClasses import Minion
 from cardClasses import Spell
 import helpers
-# from debugFunc import debug # for debugging bc my debugger isn't working
-
+"""
+This module contains all the basic game functions. 
+The functions are called in main.py
+"""
 # play cards from hand (use spell or place minion) 
 def play_cards(cur,oppo,round):
     cur.set_crystal(round) #set crystal to round or 10 if round exceed 10
@@ -73,6 +75,14 @@ def attack(cur,oppo):
             choice-=1 # adjust choice to actual index
             tar=ask_target(oppo) # return reference to the chosen target
             if tar==None: # just in case
+                choice=10
+            # player choose another minion when taunt minion is on the field
+            elif tar.description is not "Taunt" and helpers.tauntExist(oppo.field.minions):
+                print("you must attack the taunting minion")
+                choice=10
+            # the target has stealth effect so player cannot attack it
+            elif tar.description is "Stealth":
+                print("your minion cannot attack a minion with stealth effect")
                 choice=10
             elif tar==oppo: # attack player 
                 oppo.attacked(cur.field.minions[choice].attack)

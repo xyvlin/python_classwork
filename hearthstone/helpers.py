@@ -1,6 +1,8 @@
 from effects import *
-from hearthstone import ask_target
-
+from game import ask_target
+"""
+These are extra functions used throughout the game
+"""
 # display cards in a list 
 def display_cards(cards):
     count=1
@@ -54,3 +56,10 @@ def get_effect_parameters(effect, cur, oppo):
 def clean_field(player1,player2):
     player1.field.clean()
     player2.field.clean()
+
+# check if there are minions on the opposition field with taunt effect
+def tauntExist(minions):
+    for m in minions:
+        if m.description == "Taunt":
+            return True
+    return False

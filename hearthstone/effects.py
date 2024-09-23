@@ -1,17 +1,27 @@
 from cardClasses import Minion
 import random
-
+"""
+This module contains all the spells and Stormwind Champion's effect. 
+The parameter is a list for spells, hence the [0]s
+These spells return a string that is printed in console: 
+    "spell casted" means the effect was implemented 
+    any other string is error message for the player
+"""
 # spell effects (parameters are lists, hence the [0])
 def fireball_effect(target):
+    if target[0].description is "Stealth":
+        return "you cannot direct a spell on minions with stealth effect"
     target[0].health -= 6  
     return "spell casted"
 
 def polymorph_effect(target):
-    if isinstance(target[0],Minion):
+    if isinstance(target[0],Minion) and target[0].description is not "Stealth":
         target[0].attack = 1
         target[0].health = 1
         target[0].name = "Sheep"
         return "spell casted"
+    elif target[0].description is "Stealth":
+        return "you cannot direct a spell on minions with stealth effect"
     else:
         return "you cannot turn opponent player into a sheep"
 

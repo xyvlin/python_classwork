@@ -1,5 +1,4 @@
 import random
-# from debugFunc import debug
 
 class Deck():
     def __init__(self, cards):

@@ -1,5 +1,6 @@
-from effects import *
-
+"""
+These are classes for the cards. 
+"""
 class Card():
     def __init__(self, name, cost, description):
         self.name=name
@@ -16,6 +17,8 @@ class Minion(Card):
         self.health=health
         self.attack=attack
         self.awake = False
+        if description is "Charge":
+            self.awake = True
         self.effect=effect
         self.cancel_effect=cancel_effect
         self.attack_per_round=1 # each minion attack up to once per round unless has special effect
@@ -34,4 +37,4 @@ class Spell(Card):
         super().__init__(name,cost,description)
         self.effect=effect
     def play(self, para): # attack target
-        return self.effect(para)        
+        return self.effect(para)
