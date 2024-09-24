@@ -8,6 +8,7 @@ class Player():
         self.health=30
         self.attack=0 # for Minion.play() to work
         self.penalty=0 # the amount of health taken for drawing from empty deck
+        self.description="this is a player"
     # draw starting hand according to num
     def starting_hand(self, num):
         for i in range(num):
