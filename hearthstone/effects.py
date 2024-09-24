@@ -9,18 +9,18 @@ These spells return a string that is printed in console:
 """
 # spell effects (parameters are lists, hence the [0])
 def fireball_effect(target):
-    if target[0].description is "Stealth":
+    if target[0].description == "Stealth":
         return "you cannot direct a spell on minions with stealth effect"
     target[0].health -= 6  
     return "spell casted"
 
 def polymorph_effect(target):
-    if isinstance(target[0],Minion) and target[0].description is not "Stealth":
+    if isinstance(target[0],Minion) and target[0].description != "Stealth":
         target[0].attack = 1
         target[0].health = 1
         target[0].name = "Sheep"
         return "spell casted"
-    elif target[0].description is "Stealth":
+    elif target[0].description == "Stealth":
         return "you cannot direct a spell on minions with stealth effect"
     else:
         return "you cannot turn opponent player into a sheep"

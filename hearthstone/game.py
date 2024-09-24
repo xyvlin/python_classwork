@@ -77,16 +77,15 @@ def attack(cur,oppo):
             if tar==None: # just in case
                 choice=10
             # player choose another minion when taunt minion is on the field
-            elif tar.description is not "Taunt" and helpers.tauntExist(oppo.field.minions):
+            elif helpers.tauntExist(oppo.field.minions) and tar.description != "Taunt":
                 print("you must attack the taunting minion")
-                choice=10
-            # the target has stealth effect so player cannot attack it
-            elif tar.description is "Stealth":
-                print("your minion cannot attack a minion with stealth effect")
                 choice=10
             elif tar==oppo: # attack player 
                 oppo.attacked(cur.field.minions[choice].attack)
-                cur.field.minions[choice].attack_count+=1
+                cur.field.minions[choice].attack_count+=1# the target has stealth effect so player cannot attack it
+            elif tar.description == "Stealth":
+                print("your minion cannot attack a minion with stealth effect")
+                choice=10
             else: # attack minion
                 cur.field.minions[choice].play(tar)
             choice=10 # reset choice to ask again

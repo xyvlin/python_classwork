@@ -17,7 +17,7 @@ class Minion(Card):
         self.health=health
         self.attack=attack
         self.awake = False
-        if description is "Charge":
+        if description == "Charge":
             self.awake = True
         self.effect=effect
         self.cancel_effect=cancel_effect
